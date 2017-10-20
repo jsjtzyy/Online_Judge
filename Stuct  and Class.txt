@@ -1,0 +1,10 @@
+struct能包含成员函数吗？ 能！
+struct能继承吗？ 能！！
+struct能实现多态吗？ 能！！！
+
+
+不同点：
+
+1.默认继承权限不同。class的默认继承权限为private，而struct的默认继承权限为public。
+2.成员的默认访问权限不同。class的成员默认是private权限，struct默认是public权限。
+3.struct不能作为模板参数，而class可以。
