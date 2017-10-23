@@ -1,0 +1,75 @@
+Your employer, a shadowy government agency, has asked your team to build a secure backup system for its 
+top-secret files. In order to minimize the risk of those files leaking to rival nations -- or worse, 
+the news media -- you've naturally decided to store the backup in an encrypted form. The encryption process 
+takes a tree of files and directories, and scrambles both their names and their contents, but leaves the 
+directory structure intact.
+
+Your task is to write a verifier that can test whether the backup contains all of the intended data, and 
+nothing else. But in accordance with the "principle of least privilege", you don't have access to the 
+encryption key, so you can't just decrypt the backup and compare the data. The best you can do is make sure 
+that the structure of the original data matches that of the backup. For example, if the original data 
+contains two files at the top level, and two subdirectories with 5 more files each, then the backup should 
+have the same layout.
+
+Given two lists of file paths (the original and the encrypted backup), determine whether it is possible that
+the backup matches the original data. In other words: is there some way to transform the original into the 
+backup by renaming files and directories, without adding, deleting or moving anything?
+
+Input Format
+
+The input consists of two file listings: a listing of the original data, followed by a listing of the backup.
+
+Each listing begins with a line containing an integer N, the number of files. This is followed by N lines,
+each containing the path of a file. Each path contains one or more path components, which are strings of up 
+to 20 lowercase letters, separated by slashes (/). The last component is the name of a file, and any 
+preceding components are the names of its parent subdirectories, if any. The paths in each listing may appear 
+in any order.
+
+You may assume that there are no empty directories; that is, each tree contains only the directories that are 
+the ancestors of the files in the listing. And you may assume that each directory contains at most one child 
+with a given name (either a file or a directory); that is, a directory tree cannot contain both of the paths 
+a and a/b.
+
+Constraints
+
+1 <= N <= 1000 (for each file listing)
+
+Each path will have at most 10 components.
+
+Output Format
+
+If there is no way that the original data could have been encrypted to produce the backup, then print the 
+string INVALID. Otherwise, print the string OK.
+
+EXAMPLE:
+
+# test case1
+
+INPUT:
+3
+a/b/c
+a/d/e
+f/g/h
+3
+w/s/g
+x/k/l
+y/p/q
+
+OUTPUT:  INVALID
+
+
+# test case2
+
+INPUT:
+3
+a/b/c
+a/d/e
+f/g/h
+3
+w/s/g
+w/k/l
+y/p/q
+
+OUTPUT:  OK
+
+
