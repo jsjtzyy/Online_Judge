@@ -23,4 +23,4 @@ Combinatorial Games
 
 Network Flow Problems	 
 
-Advanced Search & Simulation
+Advanced Search & Simulation  (BitMasking, Heuristic in Sudoku, Bidirectional search, A* search)
